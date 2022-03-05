@@ -1,14 +1,11 @@
 # Stonehill-hackathon
 Project by IB1 CIS
 
-
 from tkinter import *
 from tkinter.font import Font
 from PIL import ImageTk, Image
 import os
 
-
-  
 
 root = Tk()
 font1= Font(family="Times New Roman", size=17)
@@ -17,7 +14,6 @@ label = Label(root, background='#F5F5DC', text=" \n Thousands of products are bo
 root.config(background='#F5F5DC')
 
     
-
 root.geometry( "4000x4000" )
 root.title('Re-Envision')
 
@@ -56,11 +52,11 @@ drop.pack()
 label = Label( root , text = " " )
 
 
+
 def execute1():
     dona1 = don1_field.get()
     Label(text=f'{dona1}! Thank you for your donation!', pady=20, bg='#ffbf00').pack()
     spec = Label(root, text="\n Enter specifications \n(NGOS will be listed below, please contact them with the necessary details before donation!)", bg='#F5F5DC', font = font2)
-    global img
     spec.pack()
     spec_field = Entry(root)
     spec_field.pack(pady=30)
@@ -81,15 +77,28 @@ def execute1():
         clicked2.set("T.V - Inches, Brand")
     elif dona1 ==("toy") or dona1==("toys"):
         clicked2.set("Toys -  Age Range, Description, etc.")
-    canvas = Canvas(root, width = 1500, height = 200)      
-    canvas.pack()           
-    img = ImageTk.PhotoImage(Image.open("img1.gif"))  
-    canvas.create_image(1, 1, anchor=NW, image=img)
-    
-    
-        
+    font4 = Font(size=14, slant="italic")
+    Button(font = font3,
+    text="Submit",
+    padx=10, 
+    pady=5,
+    command=execute2
+    ).pack()
     
 
+def execute2():
+    global img
+    path = "/Users/srivishnu/Desktop/HACK2/IMG.gif"
+    canvas = Canvas(root, width = 1500, height = 200)      
+    canvas.pack()
+    try:
+        img = ImageTk.PhotoImage(Image.open(path))
+        canvas.create_image(0.5, 0.5, anchor = NW, image=img)
+    except IOError:
+            pass
+
+    
+    
 specs = [
 "Laptop - RAM space, Processor, Hard Drive, etc.",
 "Book -  Non Fiction/Fiction, Age range, Genre",
@@ -111,8 +120,5 @@ Button(font = font3,
     ).pack()
 
 
+
 root.mainloop()
-
-
-
-
